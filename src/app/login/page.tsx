@@ -1,8 +1,5 @@
 "use client";
-import { Axios } from "axios";
-import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
-import { userAgent } from "next/server";
+import Link from "next/link";
 import React from "react";
 
 export default function login() {
@@ -10,9 +7,11 @@ export default function login() {
         Password: "",
         Email: ""
     });
-    const onLogin =()=>{}
+    const onLogin =()=>{
+        console.log("User login:", user);
+    }
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 p-5 m-10">
             <h1>Login Page</h1>
             <label htmlFor="email">Email</label>
             <input
@@ -35,7 +34,7 @@ export default function login() {
                 onChange={(e) => setUser({ ...user, Password: e.target.value })}
             />
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-yellow-500 text-black px-4 py-2 rounded"
               onClick={onLogin}
             >SignUp</button>
             <Link href="/signup">Visit SignUp Page</Link>

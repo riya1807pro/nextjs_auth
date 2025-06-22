@@ -1,8 +1,6 @@
 "use client";
 import { Axios } from "axios";
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
-import { userAgent } from "next/server";
 import React from "react";
 
 export default function SignupPage() {
@@ -11,9 +9,11 @@ export default function SignupPage() {
         Password: "",
         Email: ""
     });
-    const onSignUp =()=>{}
+    const onSignUp =()=>{
+        console.log("User signup:", user);
+    }
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 m-10 p-4">
             <h1>SignUp Page</h1>
             <label htmlFor="username">Username</label>
             <input
