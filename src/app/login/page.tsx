@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
@@ -61,6 +62,12 @@ const login = () => {
               className="bg-yellow-500 text-black px-4 py-2 rounded"
               onClick={onLogin}
             >{!buttonDisabled? "processing": "Login"}</button>
+            <br/>
+            <Link href={"/signup"} className="text-blue-500 hover:underline">
+            <button
+              className="bg-green-500 text-black px-4 py-2 rounded"
+              >{loading ? "Redirecting to sign up..." : "Go to Sign up page"}</button>
+              </Link>
         </div>
     );
 }

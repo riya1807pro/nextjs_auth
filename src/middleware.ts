@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value || '';
   const path =  request.nextUrl.pathname;
-  const isPublicPath = path=== '/login' ||  path ==='/signup';
+  const isPublicPath = path=== '/login' ||  path ==='/signup' || path === "/verifyEmail";
   
   // redirect authenticated user to home page
   if (token && isPublicPath) {
@@ -24,5 +24,7 @@ export const config = {
     '/',
     '/profile',
     '/signup', 
-    '/login'],
+    '/login',
+    '/verifyEmail',
+  ],
 }
