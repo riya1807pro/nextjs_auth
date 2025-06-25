@@ -44,44 +44,80 @@ const SignUp= async()=>{
         setLoading(false);
     }
 }
-    return(
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 m-10 p-4">
-            <h1>{loading?"Processing...":"SignUp page"}</h1>
-            <label htmlFor="username">Username</label>
+    return (
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 absolute inset-0 bg-black/30 backdrop-blur-sm"
+      style={{ backgroundImage: "url('/abstract-bg.png')" }}
+    >
+      <div className="relative z-10 backdrop-blur-sm bg-black/20 border border-white/30 shadow-2xl text-white rounded-2xl p-8 w-full max-w-md">
+        <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide">
+          {loading ? "Processing..." : "SignUp Page"}
+        </h1>
+
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="username" className="block text-sm mb-1 font-medium">
+              Username
+            </label>
             <input
-                type="text"
-                id="username"
-                placeholder="Enter your username"
-                required
-                className="border border-gray-300 rounded p-2 mb-4 w-full text-black"
-                value={user.Username}
-                onChange={(e) => setUser({ ...user, Username: e.target.value })}
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              required
+              className="w-full p-2.5 rounded-md bg-white/80 text-black placeholder-gray-600 focus:ring-2 focus:ring-blue-400"
+              value={user.Username}
+              onChange={(e) => setUser({ ...user, Username: e.target.value })}
             />
-            <label htmlFor="email">Email</label>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1 font-medium">
+              Email
+            </label>
             <input
-                type="text"
-                id="email"
-                placeholder="Enter your email"
-                required
-                className="border border-gray-300 rounded p-2 mb-4 w-full text-black"
-                value={user.Email}
-                onChange={(e) => setUser({ ...user, Email: e.target.value })}
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+              className="w-full p-2.5 rounded-md bg-white/80 text-black placeholder-gray-600 focus:ring-2 focus:ring-blue-400"
+              value={user.Email}
+              onChange={(e) => setUser({ ...user, Email: e.target.value })}
             />
-            <label htmlFor="password">Password</label>
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm mb-1 font-medium">
+              Password
+            </label>
             <input
-                type="password"
-                id="Password"
-                placeholder="Enter your Password"
-                required
-                className="border border-gray-300 rounded p-2 mb-4 w-full text-black"
-                value={user.Password}
-                onChange={(e) => setUser({ ...user, Password: e.target.value })}
+              type="password"
+              id="Password"
+              placeholder="Enter your password"
+              required
+              className="w-full p-2.5 rounded-md bg-white/80 text-black placeholder-gray-600 focus:ring-2 focus:ring-blue-400"
+              value={user.Password}
+              onChange={(e) => setUser({ ...user, Password: e.target.value })}
             />
-            <button
-              className="bg-blue-500 text-black px-4 py-2 rounded"
-              onClick={SignUp}
-            >{buttonDisabled?"Can't SignUp":"SignUp"}</button>
-            <Link href="/login">Visit login Page</Link>
+          </div>
         </div>
-    )
+
+        <button
+          className={`mt-6 w-full py-2.5 rounded-md font-semibold transition text-black ${
+            buttonDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-500"
+          }`}
+          onClick={SignUp}
+        >
+          {buttonDisabled ? "Can't SignUp" : "SignUp"}
+        </button>
+
+        <div className="mt-4 text-center text-sm text-gray-200">
+          Already have an account?{" "}
+          <Link href="/login" className="text-yellow-400 hover:text-yellow-300 underline">
+            Visit login Page
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+
 }

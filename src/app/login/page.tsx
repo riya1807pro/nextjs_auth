@@ -1,4 +1,5 @@
 "use client";
+
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,64 +13,92 @@ const login = () => {
         password: ""
     });
     const [buttonDisabled, setButtonDisabled] = useState(false);
-    const [loading, setLoading]= useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const onLogin= async()=>{
+    const onLogin = async () => {
         try {
             setLoading(true);
-            const response =  await axios.post("/api/login", user);
+            const response = await axios.post("/api/login", user);
             console.log("Login response:", response.data);
             toast.success("Login successful!");
             router.push("/profile");
-        } catch (error:any) {
-        console.error("Error during login:", error);
+        } catch (error: any) {
+            console.error("Error during login:", error);
             toast.error(error.message || "An error occurred during login");
-        }
-        finally{
+        } finally {
             setLoading(false);
         }
-    }
+    };
 
-    useEffect(()=>{
-        if(user.email.length<=0 || user.password.length<=0){
+    useEffect(() => {
+        if (user.email.length <= 0 || user.password.length <= 0) {
             setButtonDisabled(true);
+        } else {
+            setButtonDisabled(false);
         }
-    },[user])
+    }, [user]);
 
+   return (
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 absolute inset-0 bg-black/20 backdrop-blur-sm"
+      style={{ backgroundImage: "url('/abstract-bg.png')" }}
+    >
+      <div className="backdrop-blur-sm bg-black/40 border border-white/30 shadow-2xl text-white rounded-2xl p-8 w-full max-w-md">
+        <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide">
+          Welcome Back 👋
+        </h1>
 
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 p-5 m-10">
-            <h1>Login Page</h1>
-            <label htmlFor="email">Email</label>
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1 font-medium">
+              Email
+            </label>
             <input
-                type="text"
-                id="email"
-                placeholder="Enter your email"
-                required
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
-                className="border border-gray-300 rounded p-2 mb-4 w-full text-black"
+              type="text"
+              id="email"
+              placeholder="Enter your email"
+              required
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              className="w-full p-2.5 rounded-md bg-white/80 text-black placeholder-gray-600 focus:ring-2 focus:ring-yellow-400"
             />
-            <label htmlFor="password">Password</label>
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm mb-1 font-medium">
+              Password
+            </label>
             <input
-                type="password"
-                id="Password"
-                placeholder="Enter your Password"
-                required
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-                className="border border-gray-300 rounded p-2 mb-4 w-full text-black"
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              className="w-full p-2.5 rounded-md bg-white/80 text-black placeholder-gray-600 focus:ring-2 focus:ring-yellow-400"
             />
-            <button
-              className="bg-yellow-500 text-black px-4 py-2 rounded"
-              onClick={onLogin}
-            >{!buttonDisabled? "processing": "Login"}</button>
-            <br/>
-            <Link href={"/signup"} className="text-blue-500 hover:underline">
-            <button
-              className="bg-green-500 text-black px-4 py-2 rounded"
-              >{loading ? "Redirecting to sign up..." : "Go to Sign up page"}</button>
-              </Link>
+          </div>
         </div>
-    );
-}
+
+        <button
+          onClick={onLogin}
+          disabled={buttonDisabled}
+          className={`mt-6 w-full py-2.5 rounded-md font-semibold transition text-black ${
+            buttonDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-400 hover:bg-yellow-500"
+          }`}
+        >
+          {loading ? "Processing..." : "Login"}
+        </button>
+
+        <div className="mt-4 text-center text-sm text-gray-200">
+          Don’t have an account?{" "}
+          <Link href="/signup" className="text-green-400 hover:text-green-300 underline">
+            Signup here
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default login;

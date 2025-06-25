@@ -38,22 +38,38 @@ export default function ProfilePage() {
       }
    }
 
-   return(
-     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700">
-        <h1 className="flex p-4 m-4 justify-center items-center " >Profile Page</h1>
-        <p className="text-4px" > welcome to the profile section</p>
-        <hr/>
-        <h1 className="text-black">{data==="nothing"?"nOTHING HERE ":
-         <Link href={'/profile/{data}'}>{data}</Link> }</h1>
-        <hr/>
-        <button
-         className="mt-4 px-4 py-2 bg-blue-500 text-black rounded hover:bg-blue-600"
-         onClick={logout}
-        >Logout</button>
-        <button
-         className="mt-4 px-4 py-2 bg-green-800 text-black rounded hover:bg-green-900"
-         onClick={getUserData}
-        >GetUserData</button>
-    </div>
-   )
+ return (
+  <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <h1 className="text-3xl sm:text-4xl font-bold mb-4">Profile Page</h1>
+
+    <p className="text-sm mb-4">Welcome to the profile section</p>
+
+    <hr className="w-2/3 border-gray-400 dark:border-gray-600 mb-4" />
+
+    <h1 className="text-lg mb-2">
+      {data === "nothing" ? "NOTHING HERE" : (
+        <Link href={`/profile/${data}`} className="text-blue-500 hover:underline">
+          {data}
+        </Link>
+      )}
+    </h1>
+
+    <hr className="w-2/3 border-gray-400 dark:border-gray-600 my-2" />
+
+    <button
+      className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-all duration-200"
+      onClick={logout}
+    >
+      Logout
+    </button>
+
+    <button
+      className="mt-4 px-6 py-2 bg-green-700 text-white rounded-lg shadow hover:bg-green-800 transition-all duration-200"
+      onClick={getUserData}
+    >
+      GetUserData
+    </button>
+  </div>
+);
+
 }

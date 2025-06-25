@@ -38,27 +38,36 @@ export default function verifyEmailPage(){
         }
     },[token])
 
-  return (
-    <div className="flex justify-center items-center text-black">
-      <h2>Verify Email</h2>
-        {loading && <p>Loading...</p>}
-        <button className="bg-red-400 text-black p-3px m-2"> {token ?` ${token}` : "No token"} </button>
+ return (
+  <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black text-black dark:text-white px-4">
+    <h2 className="text-2xl font-semibold mb-4">Verify Email</h2>
 
-        {verified && (
-            <div className="flex bg-blue-300 text-black ">
-              <h2>Email Verified ! </h2>
-                <Link href="/login" className="bg-red-400 text-black p-3px m-2">
-                    Login </Link>
-            </div>
-        )}
+    {loading && <p className="text-sm mb-4">Loading...</p>}
 
-        {error && (
-            <div className="flex bg-red-300 text-black ">
-              <h2 className="p-2px m-5 bg-green-400">Email cannot verifies . Try Again ! </h2>
-            </div>
-        )}
+    <button className="bg-red-400 text-black px-4 py-2 rounded mb-4">
+      {token ? `${token}` : "No token"}
+    </button>
 
-    </div>
-  )
+    {verified && (
+      <div className="bg-blue-300 text-black px-6 py-4 rounded shadow mb-4 text-center">
+        <h2 className="text-lg font-medium mb-2">Email Verified!</h2>
+        <Link
+          href="/login"
+          className="inline-block bg-red-400 text-black px-4 py-2 rounded hover:bg-red-500 transition"
+        >
+          Login
+        </Link>
+      </div>
+    )}
+
+    {error && (
+      <div className="bg-red-300 text-black px-6 py-4 rounded shadow text-center">
+        <h2 className="bg-green-400 text-sm px-3 py-1 rounded">
+          Email cannot be verified. Try Again!
+        </h2>
+      </div>
+    )}
+  </div>
+);
 
 }
