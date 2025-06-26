@@ -19,6 +19,12 @@ export default function Home() {
         >
           Visit Profile Page
         </Link>
+        <Link
+          href="/forgetPassword"
+          className="block w-full text-center py-2 rounded bg-green-600 hover:bg-green-700 text-white transition"
+        >
+          Visit forgetting password Page
+        </Link>
       </div>
     </div>
   );
