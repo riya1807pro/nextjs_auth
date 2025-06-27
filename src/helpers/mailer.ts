@@ -1,7 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import nodemailer from "nodemailer"
 import  User  from "@/models/userModels";
-import bcryptjs from "bcryptjs"
-import toast from "react-hot-toast";
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 
@@ -15,7 +14,7 @@ export async function SendMail({email, emailType, userId}: any) {
             verifyTokenExpiry: Date.now() + 3600000,
         });
 
-      var transport = nodemailer.createTransport({
+      const transport = nodemailer.createTransport({
              host: "sandbox.smtp.mailtrap.io",
              port: 2525,
              auth: {

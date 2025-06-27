@@ -10,6 +10,8 @@ export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
     const user = await User.findOne({ email });
+    console.log("AFTER FORGET: ", user);
+
     if (!user) {
       // Don't reveal if user exists
       return NextResponse.json({ message: "If that email exists, a reset link has been sent." });
@@ -17,8 +19,7 @@ export async function POST(request: NextRequest) {
 
     const token = crypto.randomBytes(32).toString("hex");
     user.resetToken = token;
-    user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
-    await user.save();
+user.resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
 
     // Send email
     const transporter = nodemailer.createTransport({

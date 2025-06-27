@@ -40,7 +40,7 @@ export async function POST(request:NextRequest) {
         });
 
 
-    } catch (error:any) {
+    } catch (error) {
         console.log("Error in verifyEmail:", error);
     }
 }
