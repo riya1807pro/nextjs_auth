@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
         const saveUser = await newUser.save();
         console.log("saveUser: ",saveUser);
 
-        // send verify email
-        const sending_mail = await SendMail({email, emailType: "VERIFY", userId: saveUser._id});
+        // send Verify email
+        const sending_mail = await SendMail({email, emailType: "Verify", userId: saveUser._id});
         console.log("Verification email sent to:", email);
         console.log("Mail response:", sending_mail);
 
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
 
     } catch (error) {
-            console.error("Error in POST /api/signup:", error);
+            console.error("Error in POST /api/Signup:", error);
             return NextResponse.json(
             { error: "Internal Server Error in POST function" }, 
             { status: 500 }

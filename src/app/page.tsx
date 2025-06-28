@@ -7,20 +7,20 @@ export default function Home() {
 
       <div className="space-y-4 w-full max-w-xs">
         <Link
-          href="/signup"
+          href="/Signup"
           className="block w-full text-center py-2 rounded bg-blue-600 hover:bg-blue-700 text-white transition"
         >
-          Visit SignUp Page
+          Visit Signup Page
         </Link>
 
         <Link
-          href="/profile"
+          href="/Profile"
           className="block w-full text-center py-2 rounded bg-green-600 hover:bg-green-700 text-white transition"
         >
           Visit Profile Page
         </Link>
         <Link
-          href="/forgetPassword"
+          href="/ForgetPassword"
           className="block w-full text-center py-2 rounded bg-green-600 hover:bg-green-700 text-white transition"
         >
           Visit forgetting password Page

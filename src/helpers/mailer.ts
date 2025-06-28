@@ -10,8 +10,8 @@ export async function SendMail({email, emailType, userId}: any) {
         const token = crypto.randomBytes(32).toString("hex");
 
         await User.findByIdAndUpdate(userId, {
-            verifyToken: token,
-            verifyTokenExpiry: Date.now() + 3600000,
+            VerifyToken: token,
+            VerifyTokenExpiry: Date.now() + 3600000,
         });
 
       const transport = nodemailer.createTransport({
@@ -27,8 +27,8 @@ export async function SendMail({email, emailType, userId}: any) {
     const mailOptions={
         from: "riya@gmail.com",
         to: email,
-        subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-        html: `<p>Click <a href="${process.env.DOMAIN}/verifyEmail?token=${token}">here</a> to verify your email.</p>`
+        subject: emailType === "Verify" ? "Verify your email" : "Reset your password",
+        html: `<p>Click <a href="${process.env.DOMAIN}/VerifyEmail?token=${token}">here</a> to Verify your email.</p>`
     };
 
     // send email
@@ -36,7 +36,7 @@ export async function SendMail({email, emailType, userId}: any) {
     return mailResponse;
         }
      catch (error: any) {
-        console.log("Error in verifyEmail:", error);
+        console.log("Error in VerifyEmail:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }

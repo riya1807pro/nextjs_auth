@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 export async function GET(){
     try {
         const response = NextResponse.json(
-            { message: "Logout successful!" },
+            { message: "Logput successful!" },
             { status: 200 });
-         console.log("logout response :", response);
+         console.log("Logput response :", response);
 
         //set the response in the cookies
         response.cookies.set("token","",
@@ -17,9 +17,9 @@ export async function GET(){
         return response;
 
     } catch (error) {
-        console.error("Logout failed:", error);
+        console.error("Logput failed:", error);
         return NextResponse.json(
-            { message: "Logout failed. Please try again." }, 
+            { message: "Logput failed. Please try again." }, 
             { status: 500 });   
     }
 }

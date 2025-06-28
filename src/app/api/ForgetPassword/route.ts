@@ -36,7 +36,7 @@ try {
              }
     });
 
-    const resetUrl = `${process.env.DOMAIN}/resetPassword?token=${token}`;
+    const resetUrl = `${process.env.DOMAIN}/ResetPassword?token=${token}`;
     await transporter.sendMail({
       from: "no-reply@example.com",
       to: email,
@@ -46,7 +46,7 @@ try {
 
     return NextResponse.json({ message: "If that email exists, a reset link has been sent." });
   } catch (error) {
-    console.error("Error in forgetPassword:", error);
+    console.error("Error in ForgetPassword:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

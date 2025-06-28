@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🔐 Next.js Auth System
+A modern, full-featured authentication system built with Next.js — secure, scalable, and ready for production!
 
-## Getting Started
+🚀 Features
+📝 User Registration & Login
+✅ Email Verification
+🔑 JWT-based Authentication
+🔒 Password Hashing with bcrypt
+🔁 Password Reset via Email
+📨 Transactional Emails with Nodemailer & Mailtrap
+👤 User Profile & Roles (Admin/User)
+🛡️ Protected API Routes & Middleware
+🌙 Beautiful, Responsive UI
+🗂️ Modular Code Structure
+🧪 Easy to Extend & Customize
+🛠️ Tech Stack
+⚡ Next.js 14+ (App Router)
+🟢 MongoDB & Mongoose
+🔐 JWT for authentication
+🔑 bcryptjs for password hashing
+📧 Nodemailer + Mailtrap for email
+💅 Tailwind CSS for styling
+🧰 TypeScript for type safety
+📦 Project Structure
+⚙️ Getting Started
+Clone the repo:
 
-First, run the development server:
+Install dependencies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Configure environment variables:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy .env.example to .env and fill in your MongoDB, JWT, and Mailtrap credentials.
+Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your browser:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit http://localhost:3000
+📬 Email Testing
+Uses Mailtrap for safe email testing in development.
+Configure your Mailtrap credentials in .env.
+🛡️ Security
+Passwords are hashed with bcrypt.
+JWT tokens for session management.
+Sensitive routes protected by middleware.
+🤝 Contributing
+Contributions, issues, and feature requests are welcome!
+Feel free to check the issues page.
 
-## Learn More
+📄 License
+This project is MIT licensed.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🙏 Acknowledgements
+Next.js
+MongoDB
+Mailtrap
+Nodemailer
+bcryptjs
+Tailwind CSS

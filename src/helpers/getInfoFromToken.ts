@@ -19,7 +19,7 @@ export const getDataFromToken = (request: NextRequest) => {
             throw new Error("No token found");
         }  
 
-         const decodeToken = jwt.verify(token, process.env.JWT_TOKEN_SECRET!) as TokenPayload;
+         const decodeToken = jwt.Verify(token, process.env.JWT_TOKEN_SECRET!) as TokenPayload;
          return decodeToken
 
     } catch (error: any) {

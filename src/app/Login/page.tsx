@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
-const login = () => {
+const Login = () => {
     const router = useRouter();
     const [user, setUser] = useState({
         email: "",
@@ -18,13 +18,13 @@ const login = () => {
     const onLogin = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("/api/login", user);
+            const response = await axios.post("/api/Login", user);
             console.log("Login response:", response.data);
             toast.success("Login successful!");
-            router.push("/profile");
+            router.push("/Profile");
         } catch (error: any) {
-            console.error("Error during login:", error);
-            toast.error(error.message || "An error occurred during login");
+            console.error("Error during Login:", error);
+            toast.error(error.message || "An error occurred during Login");
         } finally {
             setLoading(false);
         }
@@ -92,8 +92,11 @@ const login = () => {
 
         <div className="mt-4 text-center text-sm text-gray-200">
           Don’t have an account?{" "}
-          <Link href="/signup" className="text-green-400 hover:text-green-300 underline">
+          <Link href="/Signup" className="text-green-400 hover:text-green-300 underline">
             Signup here
+          </Link><br/>
+          <Link href="/ForgetPassword" className="text-green-400 hover:text-green-300 underline">
+            Forget Password
           </Link>
         </div>
       </div>
@@ -101,4 +104,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

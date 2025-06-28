@@ -3,10 +3,8 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export default function ForgetPasswordPage() {
-  const router = useRouter()
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
@@ -15,9 +13,8 @@ export default function ForgetPasswordPage() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("/api/forgetPassword", { email });
+      await axios.post("/api/ForgetPassword", { email });
       setSent(true);
-        router.push("/resetPassword");
     } catch (err: any) {
       setError(err?.response?.data?.error || "Something went wrong");
     }

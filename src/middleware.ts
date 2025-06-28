@@ -5,10 +5,10 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value || '';
   const path =  request.nextUrl.pathname;
-  const isPublicPath = path=== '/login' ||  path ==='/signup' 
-  || path === "/verifyEmail"
-  || path === '/forgetPassword'
-  || path === '/resetPassword'
+  const isPublicPath = path=== '/Login' ||  path ==='/Signup' 
+  || path === "/VerifyEmail"
+  || path === '/ForgetPassword'
+  || path === '/ResetPassword'
   ;
   
   // redirect authenticated user to home page
@@ -16,9 +16,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // redirect unauthenticated user to login page
+  // redirect unauthenticated user to Login page
   if (!token && !isPublicPath) {
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.redirect(new URL('/Login', request.url))
   }
 
 }
@@ -26,11 +26,11 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/',
-    '/profile',
-    '/signup', 
-    '/login',
-    '/verifyEmail',
-    '/forgetPassword',
-    '/resetPassword',
+    '/Profile',
+    '/Signup', 
+    '/Login',
+    '/VerifyEmail',
+    '/ForgetPassword',
+    '/ResetPassword',
   ],
 }

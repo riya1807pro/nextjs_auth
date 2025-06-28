@@ -20,9 +20,9 @@ export default function ResetPasswordPage() {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("/api/resetPassword", { token, password });
+      await axios.post("/api/ResetPassword", { token, password });
       setSuccess(true);
-        router.push("/resetPassword");
+        router.push("/ResetPassword");
 
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
@@ -38,7 +38,7 @@ export default function ResetPasswordPage() {
       <div className="bg-white/80 dark:bg-black/40 p-8 rounded-2xl shadow-lg max-w-md w-full">
         <h2 className="text-2xl font-bold mb-4 text-center">Reset Password</h2>
         {success ? (
-          <div className="text-green-600 text-center">Password reset! Redirecting to login...</div>
+          <div className="text-green-600 text-center">Password reset! Redirecting to Login...</div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <input

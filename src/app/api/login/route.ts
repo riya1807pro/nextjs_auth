@@ -58,7 +58,7 @@ export async function POST(request:NextRequest) {
         console.log("user response : ", response);
         return response;
       } catch (error) {
-        console.error("Error in POST /api/login:", error);
+        console.error("Error in POST /api/Login:", error);
         return NextResponse.json(
             { error: "Internal Server Error in POST function" }, 
             { status: 500 }

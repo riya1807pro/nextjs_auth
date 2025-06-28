@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function verifyEmailPage(){
+export default function VerifyEmailPage(){
 
     const [token, setToken] = useState("");
     const [loading, setLoading] = useState(false);
@@ -17,16 +17,16 @@ export default function verifyEmailPage(){
         setToken(UrlToken || "");
     }, []);
 
-    const verifyEmail = async () => {
+    const VerifyEmail = async () => {
         setLoading(true);
         try {
-            await axios.post("/api/verifyEmail", { token });
+            await axios.post("/api/VerifyEmail", { token });
             setVerified(true);
             setError(false);
         } catch (error: any) {
             setError(true);
             setVerified(false);
-            console.log("error in verify email page", error.message);
+            console.log("error in Verify email page", error.message);
         } finally {
             setLoading(false);
         }
@@ -34,7 +34,7 @@ export default function verifyEmailPage(){
 
     useEffect(()=>{
         if(token.length > 0){
-            verifyEmail();
+            VerifyEmail();
         }
     },[token])
 
@@ -52,7 +52,7 @@ export default function verifyEmailPage(){
       <div className="bg-blue-300 text-black px-6 py-4 rounded shadow mb-4 text-center">
         <h2 className="text-lg font-medium mb-2">Email Verified!</h2>
         <Link
-          href="/login"
+          href="/Login"
           className="inline-block bg-red-400 text-black px-4 py-2 rounded hover:bg-red-500 transition"
         >
           Login

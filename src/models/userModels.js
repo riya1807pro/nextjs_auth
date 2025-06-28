@@ -27,8 +27,8 @@ export const userSchema =  new mongoose.Schema({
     },
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
-    verifyToken: String,
-    verifyTokenExpiry: Date,
+    VerifyToken: String,
+    VerifyTokenExpiry: Date,
     resetToken: String,
     resetTokenExpiry: Date,
 })

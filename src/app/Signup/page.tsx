@@ -23,7 +23,7 @@ export default function SignupPage() {
         }
     },[user])
 
-const SignUp= async()=>{
+const Signup= async()=>{
     try {
         setLoading(true);
           const payload = {
@@ -31,15 +31,15 @@ const SignUp= async()=>{
             email: user.Email,
             password: user.Password,
         };
-        const response = await axios.post("api/signup",payload);
+        const response = await axios.post("api/Signup",payload);
         console.log("Signup response:", response.data);
-        router.push("/login");
-        toast.success("Signup successful! Please login.");
-        console.log("please login");
+        router.push("/Login");
+        toast.success("Signup successful! Please Login.");
+        console.log("please Login");
         
     } catch (error: any) {
-        console.error("Error during signup:", error);
-        toast.error(error.message || "An error occurred during signup");
+        console.error("Error during Signup:", error);
+        toast.error(error.message || "An error occurred during Signup");
     }finally{
         setLoading(false);
     }
@@ -51,7 +51,7 @@ const SignUp= async()=>{
     >
       <div className="relative z-10 backdrop-blur-sm bg-black/20 border border-white/30 shadow-2xl text-white rounded-2xl p-8 w-full max-w-md">
         <h1 className="text-4xl font-extrabold mb-6 text-center tracking-wide">
-          {loading ? "Processing..." : "SignUp Page"}
+          {loading ? "Processing..." : "Signup Page"}
         </h1>
 
         <div className="space-y-4">
@@ -105,15 +105,15 @@ const SignUp= async()=>{
           className={`mt-6 w-full py-2.5 rounded-md font-semibold transition text-black ${
             buttonDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400 hover:bg-blue-500"
           }`}
-          onClick={SignUp}
+          onClick={Signup}
         >
-          {buttonDisabled ? "Can't SignUp" : "SignUp"}
+          {buttonDisabled ? "Can't Signup" : "Signup"}
         </button>
 
         <div className="mt-4 text-center text-sm text-gray-200">
           Already have an account?{" "}
-          <Link href="/login" className="text-yellow-400 hover:text-yellow-300 underline">
-            Visit login Page
+          <Link href="/Login" className="text-yellow-400 hover:text-yellow-300 underline">
+            Visit Login Page
           </Link>
         </div>
       </div>

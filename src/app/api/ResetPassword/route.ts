@@ -26,7 +26,7 @@ const user = await User.findOne({
 
     return NextResponse.json({ message: "Password reset successful" });
   } catch (error) {
-    console.error("Error in resetPassword:", error);
+    console.error("Error in ResetPassword:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

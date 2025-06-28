@@ -12,10 +12,10 @@ export async function POST(request:NextRequest) {
         const {token} = reqBody;
         console.log("reqBody token:", token);
 
-        // verify use by token 
+        // Verify use by token 
         const user = await User.findOne({
-            verifyToken: token, 
-            verifyTokenExpiry: {$gt: Date.now()}
+            VerifyToken: token, 
+            VerifyTokenExpiry: {$gt: Date.now()}
         });
 
         if(!user){
@@ -27,12 +27,12 @@ export async function POST(request:NextRequest) {
 
 
         user.isVerified = true;
-        user.verifyToken = undefined;
-        user.verifyTokenExpiry = undefined;
+        user.VerifyToken = undefined;
+        user.VerifyTokenExpiry = undefined;
         await user.save();
         console.log("User verified successfully:");
 
-        // NextResponse.redirect("/login");
+        // NextResponse.redirect("/Login");
 
         return NextResponse.json({
             message: "User verified successfully",
@@ -41,6 +41,6 @@ export async function POST(request:NextRequest) {
 
 
     } catch (error) {
-        console.log("Error in verifyEmail:", error);
+        console.log("Error in VerifyEmail:", error);
     }
 }
