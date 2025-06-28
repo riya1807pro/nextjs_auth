@@ -5,11 +5,11 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function ResetPasswordPage() {
+  const router = useRouter()
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -22,9 +22,14 @@ export default function ResetPasswordPage() {
     try {
       await axios.post("/api/resetPassword", { token, password });
       setSuccess(true);
-      setTimeout(() => router.push("/login"), 2000);
-    } catch (err: any) {
-      setError(err?.response?.data?.error || "Something went wrong");
+        router.push("/resetPassword");
+
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.error || "Something went wrong");
+      } else {
+        setError("Something went wrong");
+      }
     }
   };
 

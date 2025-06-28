@@ -9,10 +9,10 @@ export async function POST(request: NextRequest) {
   try {
     const { token, password } = await request.json();
     console.log("token", token)
-    const user = await User.findOne({
-      resetToken: token,
-      resetTokenExpiry: { $gt: Date.now() }
-    });
+const user = await User.findOne({
+  resetToken: token,
+  resetTokenExpiry: { $gt: Date.now() }
+});
     console.log("USER FOUND:", user);
     if (!user) {    
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 400 });

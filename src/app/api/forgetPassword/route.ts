@@ -18,17 +18,22 @@ export async function POST(request: NextRequest) {
     }
 
     const token = crypto.randomBytes(32).toString("hex");
-    user.resetToken = token;
-user.resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
-
+try {
+  user.resetToken = token;
+  user.resetTokenExpiry = new Date(Date.now() + 3600000);
+  await user.save();
+  console.log("User updated with resetToken:", user);
+} catch (err) {
+  console.error("Error saving user:", err);
+}
     // Send email
     const transporter = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "7aef39e28604f5",
-        pass: "a8b3033c0968fe"
-      }
+         host: "sandbox.smtp.mailtrap.io",
+             port: 2525,
+             auth: {
+               user: "7aef39e28604f5",
+               pass: "a8b3033c0968fe"
+             }
     });
 
     const resetUrl = `${process.env.DOMAIN}/resetPassword?token=${token}`;
