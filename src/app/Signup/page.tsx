@@ -1,6 +1,6 @@
 "use client";
-import axios, { Axios } from "axios";
-import Link, { LinkProps } from "next/link";
+import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
@@ -37,9 +37,13 @@ const Signup= async()=>{
         toast.success("Signup successful! Please Login.");
         console.log("please Login");
         
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Error during Signup:", error);
-        toast.error(error.message || "An error occurred during Signup");
+        if (error instanceof Error) {
+            toast.error(error.message || "An error occurred during Signup");
+        } else {
+            toast.error("An error occurred during Signup");
+        }
     }finally{
         setLoading(false);
     }

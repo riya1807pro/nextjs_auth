@@ -23,20 +23,36 @@ export default function VerifyEmailPage(){
             await axios.post("/api/VerifyEmail", { token });
             setVerified(true);
             setError(false);
-        } catch (error: any) {
+        } catch (error) {
             setError(true);
             setVerified(false);
-            console.log("error in Verify email page", error.message);
+            console.log("error in Verify email page", error);
         } finally {
             setLoading(false);
         }
     };
+    console.log(VerifyEmail)
 
-    useEffect(()=>{
-        if(token.length > 0){
+    useEffect(() => {
+        const VerifyEmail = async () => {
+            setLoading(true);
+            try {
+                await axios.post("/api/VerifyEmail", { token });
+                setVerified(true);
+                setError(false);
+            } catch (error) {
+                setError(true);
+                setVerified(false);
+                console.log("error in Verify email page", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (token.length > 0) {
             VerifyEmail();
         }
-    },[token])
+    }, [token]);
 
  return (
   <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black text-black dark:text-white px-4">

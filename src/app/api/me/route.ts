@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
             data: user,
         })
 
-    } catch (error:any) {
+    } catch (error) {
         console.error("Error in GET /api/me:", error);
         return NextResponse.json(
             { error: "Internal Server Error" }, 

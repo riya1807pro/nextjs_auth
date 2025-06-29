@@ -22,9 +22,8 @@ const Login = () => {
             console.log("Login response:", response.data);
             toast.success("Login successful!");
             router.push("/Profile");
-        } catch (error: any) {
+        } catch (error) {
             console.error("Error during Login:", error);
-            toast.error(error.message || "An error occurred during Login");
         } finally {
             setLoading(false);
         }

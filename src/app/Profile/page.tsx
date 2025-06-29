@@ -32,7 +32,7 @@ export default function ProfilePage() {
          console.log("User data:", res.data.data._id);
          setData(res.data.data._id)
 
-      } catch (error:any) {
+      } catch (error) {
          console.error("Error fetching user data:", error);
          toast.error("Failed to fetch user data.");
       }
